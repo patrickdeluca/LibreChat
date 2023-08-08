@@ -7,7 +7,8 @@ const StableDiffusionAPI = require('./StableDiffusion');
 const WolframAlphaAPI = require('./Wolfram');
 const StructuredWolfram = require('./structured/Wolfram');
 const SelfReflectionTool = require('./SelfReflection');
-const E2BTools = require('./structured/E2B');
+const E2BTools = require('./structured/E2BTools');
+const CodeSherpaTools = require('./structured/CodeSherpaTools');
 const availableTools = require('./manifest.json');
 
 module.exports = {
@@ -22,4 +23,5 @@ module.exports = {
   StructuredWolfram,
   SelfReflectionTool,
   E2BTools,
+  CodeSherpaTools,
 };
