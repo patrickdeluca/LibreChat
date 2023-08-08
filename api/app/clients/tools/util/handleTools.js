@@ -15,7 +15,7 @@ const {
   OpenAICreateImage,
   StableDiffusionAPI,
   StructuredSD,
-  CodeInterpreterTools,
+  E2BTools,
 } = require('../');
 const { loadSpecs } = require('./loadSpecs');
 
@@ -90,7 +90,7 @@ const loadTools = async ({ user, model, functions = null, tools = [], options = 
   const openAIApiKey = await getOpenAIKey(options, user);
 
   const customConstructors = {
-    code_interpreter: async () => {
+    e2b_code_interpreter: async () => {
       if (!functions) {
         return null;
       }
@@ -101,7 +101,7 @@ const loadTools = async ({ user, model, functions = null, tools = [], options = 
         serverUrl = await getUserPluginAuthValue(user, 'E2B_SERVER_URL');
       }
 
-      for (const tool of CodeInterpreterTools) {
+      for (const tool of E2BTools) {
         suite.push(
           new tool({
             E2B_SERVER_URL: serverUrl,
