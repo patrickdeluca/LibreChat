@@ -16,6 +16,7 @@ const {
   StableDiffusionAPI,
   StructuredSD,
   E2BTools,
+  CodeSherpa,
   CodeSherpaTools,
 } = require('../');
 const { loadSpecs } = require('./loadSpecs');
@@ -101,22 +102,22 @@ const loadTools = async ({ user, model, functions = null, tools = [], options = 
         pluginKey: 'e2b_code_interpreter',
         tools: E2BTools,
         user,
-        model,
-        openAIApiKey,
-        options,
+        options: {
+          model,
+          openAIApiKey,
+          ...options,
+        },
       });
     },
-    codesherpa: async () => {
+    codesherpa_tools: async () => {
       if (!functions) {
         return null;
       }
 
       return await loadToolSuite({
-        pluginKey: 'codesherpa',
+        pluginKey: 'codesherpa_tools',
         tools: CodeSherpaTools,
         user,
-        model,
-        openAIApiKey,
         options,
       });
     },
@@ -159,6 +160,7 @@ const loadTools = async ({ user, model, functions = null, tools = [], options = 
   const requestedTools = {};
   let specs = null;
   if (functions) {
+    toolConstructors.codesherpa = CodeSherpa;
     specs = await loadSpecs({
       llm: model,
       user,

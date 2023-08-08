@@ -8,6 +8,7 @@ const WolframAlphaAPI = require('./Wolfram');
 const StructuredWolfram = require('./structured/Wolfram');
 const SelfReflectionTool = require('./SelfReflection');
 const E2BTools = require('./structured/E2BTools');
+const CodeSherpa = require('./structured/CodeSherpa');
 const CodeSherpaTools = require('./structured/CodeSherpaTools');
 const availableTools = require('./manifest.json');
 
@@ -22,6 +23,7 @@ module.exports = {
   WolframAlphaAPI,
   StructuredWolfram,
   SelfReflectionTool,
-  E2BTools,
+  CodeSherpa,
   CodeSherpaTools,
+  E2BTools,
 };
